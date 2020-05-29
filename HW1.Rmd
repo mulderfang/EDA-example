@@ -1,0 +1,127 @@
+---
+title: "Homework 1"
+author: "105304028_統計四_方品謙"
+output:
+  html_document:
+    df_print: paged
+---
+## **線上連續劇觀看資料**
+##### 安裝package
+```{r}
+library(tidyverse)
+library(readr)
+```
+#### 匯入資料
+##### 首先必須設定工作目錄(setwd(“工作目錄”))，再讀入資料
+```{r}
+watch.table <- read_csv("watch_table.csv")
+user.table <- read_csv("user_table.csv")
+drama.table <- read_csv("drama_table.csv")
+```
+### **1.將 watch.table 與其他兩個報表合併為full.table**
+```{r}
+full.table <- watch.table %>% 
+  left_join(user.table, by = "user_id") %>% 
+  left_join(drama.table , by = "drama_id")
+```
+### **2.計算每部劇男生、女生觀看次數**
+```{r}
+full.table %>% group_by(gender) %>% 
+  select( gender) %>% 
+  summarize(nmuber = n() )
+```
+### **3.針對用Android系統的客戶進行分析**
+```{r}
+full.table %>% 
+  group_by(user_name , age ,location) %>% 
+  filter(device == "Android") %>% 
+  summarize(male = table(unique(gender))[1],
+            female = table(unique(gender))[2])
+```
+使用Android系統的客戶只有兩名，全為男性，分別為25歲及37歲。
+
+### **4.針對台北男性客戶進行分析**
+```{r}
+full.table %>% 
+  filter(location == "Taipei" & gender == "male" ) %>% 
+  group_by(user_name, device , age ) %>%  summarize(gender = unique(gender))
+```
+由上表可以看到，台北男性最常使用Chrome為device，iOS為其次。而年齡介於24-29歲之間，對比所有觀看客戶來說相對年輕。
+
+## **kaggle上2019紐約Airbnb的資料**
+#### 匯入資料
+##### 首先必須設定工作目錄(setwd(“工作目錄”))，再讀入資料
+```{r}
+air_bnb <- read_csv("AB_NYC_2019.csv")
+```
+### **1.利用ggplot畫經緯度的scatter plot**
+```{r}
+air_bnb %>% filter( neighbourhood_group == "Manhattan" ) %>% 
+  ggplot( air_bnb , mapping = aes(x = latitude , y = longitude)) + geom_point(size = 0.1, color = "#56B4E9")+
+  theme(axis.text.y = element_text(size = 10 , vjust = 0.5, hjust = 0.5))+
+  theme(axis.line = element_line(size=0.2, colour = "black"))
+```
+
+### **2.針對曼哈頓資畫bar chart**
+```{r}
+air_bnb %>% 
+  filter(neighbourhood_group == "Manhattan"  & number_of_reviews >=400) %>%
+  group_by(neighbourhood) %>%
+  summarise(sum_reviews = sum(number_of_reviews)) %>%
+ggplot(air_bnb, mapping = aes(x = neighbourhood , y = sum_reviews)) + geom_bar(stat="identity" , fill = "#56B4E9" , alpha = 0.7) + 
+  geom_text(stat="identity",aes(label=sum_reviews),vjust=2, color=I("#000000"),size=3)+
+  theme(axis.text.x = element_text(size = 10 , vjust = 0.5, hjust = 0.5 , angle = 30))+
+  theme(axis.text.y = element_text(size = 10 , vjust = 0.5, hjust = 0.5))+
+  theme(axis.line = element_line(size=0.2, colour = "black"))
+```
+
+### **3.擁有最多number_of_reviews的neighbourhood**
+```{r}
+air_bnb %>% 
+  filter(neighbourhood_group == "Manhattan"  & number_of_reviews >=400) %>%
+  group_by(neighbourhood) %>%
+  summarise(sum_reviews = sum(number_of_reviews)) %>%
+  select(neighbourhood,sum_reviews) %>% 
+  filter(rank(desc(sum_reviews)) == 1)
+```
+
+### **4.EDA分析**
+#### 去除掉NA值
+```{r}
+Harlem <- air_bnb %>% 
+              filter(number_of_reviews >=400 & neighbourhood == "Harlem")
+table(is.na(Harlem))
+Harlem <- na.omit(Harlem)
+table(is.na(Harlem))
+```
+#### EDA分析
+```{r}
+str(Harlem)
+```
+
+```{r}
+ggplot(Harlem , aes(x = number_of_reviews, y = price, color = host_name, shape = room_type)) +
+  geom_point(size=1.5)+
+  theme(axis.text.x = element_text(size = 10 , vjust = 0.5, hjust = 0.5))+
+  theme(axis.text.y = element_text(size = 10 , vjust = 0.5, hjust = 0.5))+
+  theme(axis.line = element_line(size=0.2, colour = "black"))
+```
+
+number_of_reviews大於400且neighbourhood為Harlem的共有五間房子，評論最多的607則。但價格最高的反而是評論數最少的房子。
+而評論最多的三間皆是Ji的房子，其他則是Agnes的。
+
+```{r}
+ggplot(Harlem , aes(x = price, fill = room_type)) + geom_histogram(alpha = 0.7 , binwidth=3)+
+  theme(axis.text.x = element_text(size = 10 , vjust = 0.5, hjust = 0.5))+
+  theme(axis.text.y = element_text(size = 10 , vjust = 0.5, hjust = 0.5))+
+  theme(axis.line = element_line(size=0.2, colour = "black"))
+```
+
+最高房價為85元，類型為Private room。最低房價為49元，類型為Private room。
+
+
+
+
+
+
+

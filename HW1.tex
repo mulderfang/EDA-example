@@ -1,0 +1,472 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Homework 1},
+            pdfauthor={105304028\_統計四\_方品謙},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Homework 1}
+\author{105304028\_統計四\_方品謙}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux7ddaux4e0aux9023ux7e8cux5287ux89c0ux770bux8cc7ux6599}{%
+\subsection{\texorpdfstring{\textbf{線上連續劇觀看資料}}{線上連續劇觀看資料}}\label{ux7ddaux4e0aux9023ux7e8cux5287ux89c0ux770bux8cc7ux6599}}
+
+\hypertarget{ux5b89ux88ddpackage}{%
+\subparagraph{安裝package}\label{ux5b89ux88ddpackage}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages ------------------------------------------------------------------------ tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.0     v purrr   0.3.3
+## v tibble  2.1.3     v dplyr   0.8.4
+## v tidyr   1.0.2     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts --------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux532fux5165ux8cc7ux6599}{%
+\paragraph{匯入資料}\label{ux532fux5165ux8cc7ux6599}}
+
+\hypertarget{ux9996ux5148ux5fc5ux9808ux8a2dux5b9aux5de5ux4f5cux76eeux9304setwdux5de5ux4f5cux76eeux9304ux518dux8b80ux5165ux8cc7ux6599}{%
+\subparagraph{首先必須設定工作目錄(setwd(``工作目錄''))，再讀入資料}\label{ux9996ux5148ux5fc5ux9808ux8a2dux5b9aux5de5ux4f5cux76eeux9304setwdux5de5ux4f5cux76eeux9304ux518dux8b80ux5165ux8cc7ux6599}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{watch.table <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"watch_table.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   watch_id = col_character(),
+##   time_stamp = col_character(),
+##   user_id = col_character(),
+##   drama_id = col_character(),
+##   device = col_character()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{user.table <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"user_table.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   user_id = col_character(),
+##   user_name = col_character(),
+##   gender = col_character(),
+##   age = col_double(),
+##   location = col_character(),
+##   payment = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{drama.table <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"drama_table.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   drama_id = col_character(),
+##   drama_name = col_character(),
+##   area = col_character(),
+##   actors = col_character(),
+##   description = col_character()
+## )
+\end{verbatim}
+
+\hypertarget{ux5c07-watch.table-ux8207ux5176ux4ed6ux5169ux500bux5831ux8868ux5408ux4f75ux70bafull.table}{%
+\subsubsection{\texorpdfstring{\textbf{1.將 watch.table
+與其他兩個報表合併為full.table}}{1.將 watch.table 與其他兩個報表合併為full.table}}\label{ux5c07-watch.table-ux8207ux5176ux4ed6ux5169ux500bux5831ux8868ux5408ux4f75ux70bafull.table}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full.table <-}\StringTok{ }\NormalTok{watch.table }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{left_join}\NormalTok{(user.table, }\DataTypeTok{by =} \StringTok{"user_id"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{left_join}\NormalTok{(drama.table , }\DataTypeTok{by =} \StringTok{"drama_id"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux8a08ux7b97ux6bcfux90e8ux5287ux7537ux751fux5973ux751fux89c0ux770bux6b21ux6578}{%
+\subsubsection{\texorpdfstring{\textbf{2.計算每部劇男生、女生觀看次數}}{2.計算每部劇男生、女生觀看次數}}\label{ux8a08ux7b97ux6bcfux90e8ux5287ux7537ux751fux5973ux751fux89c0ux770bux6b21ux6578}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full.table }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(gender) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{( gender) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{nmuber =} \KeywordTok{n}\NormalTok{() )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   gender nmuber
+##   <chr>   <int>
+## 1 female     18
+## 2 male       21
+\end{verbatim}
+
+\hypertarget{ux91ddux5c0dux7528androidux7cfbux7d71ux7684ux5ba2ux6236ux9032ux884cux5206ux6790}{%
+\subsubsection{\texorpdfstring{\textbf{3.針對用Android系統的客戶進行分析}}{3.針對用Android系統的客戶進行分析}}\label{ux91ddux5c0dux7528androidux7cfbux7d71ux7684ux5ba2ux6236ux9032ux884cux5206ux6790}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full.table }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(user_name , age ,location) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(device }\OperatorTok{==}\StringTok{ "Android"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{male =} \KeywordTok{table}\NormalTok{(}\KeywordTok{unique}\NormalTok{(gender))[}\DecValTok{1}\NormalTok{],}
+            \DataTypeTok{female =} \KeywordTok{table}\NormalTok{(}\KeywordTok{unique}\NormalTok{(gender))[}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 5
+## # Groups:   user_name, age [2]
+##   user_name   age location  male female
+##   <chr>     <dbl> <chr>    <int>  <int>
+## 1 Alex Chu     25 Taipei       1     NA
+## 2 Sandy Wu     37 Hsinchu      1     NA
+\end{verbatim}
+
+使用Android系統的客戶只有兩名，全為男性，分別為25歲及37歲。
+
+\hypertarget{ux91ddux5c0dux53f0ux5317ux7537ux6027ux5ba2ux6236ux9032ux884cux5206ux6790}{%
+\subsubsection{\texorpdfstring{\textbf{4.針對台北男性客戶進行分析}}{4.針對台北男性客戶進行分析}}\label{ux91ddux5c0dux53f0ux5317ux7537ux6027ux5ba2ux6236ux9032ux884cux5206ux6790}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full.table }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(location }\OperatorTok{==}\StringTok{ "Taipei"} \OperatorTok{&}\StringTok{ }\NormalTok{gender }\OperatorTok{==}\StringTok{ "male"}\NormalTok{ ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(user_name, device , age ) }\OperatorTok{%>%}\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{gender =} \KeywordTok{unique}\NormalTok{(gender))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 7 x 4
+## # Groups:   user_name, device [7]
+##   user_name device    age gender
+##   <chr>     <chr>   <dbl> <chr> 
+## 1 Alex Chu  Android    25 male  
+## 2 Alex Chu  Chrome     25 male  
+## 3 Andy Liu  iOS        26 male  
+## 4 Eric Chou Chrome     28 male  
+## 5 Jacky Wu  iOS        24 male  
+## 6 Jay Chou  Chrome     29 male  
+## 7 Tom Gu    IE         29 male
+\end{verbatim}
+
+由上表可以看到，台北男性最常使用Chrome為device，iOS為其次。而年齡介於24-29歲之間，對比所有觀看客戶來說相對年輕。
+
+\hypertarget{kaggleux4e0a2019ux7d10ux7d04airbnbux7684ux8cc7ux6599}{%
+\subsection{\texorpdfstring{\textbf{kaggle上2019紐約Airbnb的資料}}{kaggle上2019紐約Airbnb的資料}}\label{kaggleux4e0a2019ux7d10ux7d04airbnbux7684ux8cc7ux6599}}
+
+\hypertarget{ux532fux5165ux8cc7ux6599-1}{%
+\paragraph{匯入資料}\label{ux532fux5165ux8cc7ux6599-1}}
+
+\hypertarget{ux9996ux5148ux5fc5ux9808ux8a2dux5b9aux5de5ux4f5cux76eeux9304setwdux5de5ux4f5cux76eeux9304ux518dux8b80ux5165ux8cc7ux6599-1}{%
+\subparagraph{首先必須設定工作目錄(setwd(``工作目錄''))，再讀入資料}\label{ux9996ux5148ux5fc5ux9808ux8a2dux5b9aux5de5ux4f5cux76eeux9304setwdux5de5ux4f5cux76eeux9304ux518dux8b80ux5165ux8cc7ux6599-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{air_bnb <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"AB_NYC_2019.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   id = col_double(),
+##   name = col_character(),
+##   host_id = col_double(),
+##   host_name = col_character(),
+##   neighbourhood_group = col_character(),
+##   neighbourhood = col_character(),
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   room_type = col_character(),
+##   price = col_double(),
+##   minimum_nights = col_double(),
+##   number_of_reviews = col_double(),
+##   last_review = col_date(format = ""),
+##   reviews_per_month = col_double(),
+##   calculated_host_listings_count = col_double(),
+##   availability_365 = col_double()
+## )
+\end{verbatim}
+
+\hypertarget{ux5229ux7528ggplotux756bux7d93ux7defux5ea6ux7684scatter-plot}{%
+\subsubsection{\texorpdfstring{\textbf{1.利用ggplot畫經緯度的scatter
+plot}}{1.利用ggplot畫經緯度的scatter plot}}\label{ux5229ux7528ggplotux756bux7d93ux7defux5ea6ux7684scatter-plot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{air_bnb }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{( neighbourhood_group }\OperatorTok{==}\StringTok{ "Manhattan"}\NormalTok{ ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{( air_bnb , }\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ latitude , }\DataTypeTok{y =}\NormalTok{ longitude)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{color =} \StringTok{"#56B4E9"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HW1_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\hypertarget{ux91ddux5c0dux66fcux54c8ux9813ux8cc7ux756bbar-chart}{%
+\subsubsection{\texorpdfstring{\textbf{2.針對曼哈頓資畫bar
+chart}}{2.針對曼哈頓資畫bar chart}}\label{ux91ddux5c0dux66fcux54c8ux9813ux8cc7ux756bbar-chart}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{air_bnb }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(neighbourhood_group }\OperatorTok{==}\StringTok{ "Manhattan"}  \OperatorTok{&}\StringTok{ }\NormalTok{number_of_reviews }\OperatorTok{>=}\DecValTok{400}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(neighbourhood) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{sum_reviews =} \KeywordTok{sum}\NormalTok{(number_of_reviews)) }\OperatorTok{%>%}
+\KeywordTok{ggplot}\NormalTok{(air_bnb, }\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ neighbourhood , }\DataTypeTok{y =}\NormalTok{ sum_reviews)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{ , }\DataTypeTok{fill =} \StringTok{"#56B4E9"}\NormalTok{ , }\DataTypeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label=}\NormalTok{sum_reviews),}\DataTypeTok{vjust=}\DecValTok{2}\NormalTok{, }\DataTypeTok{color=}\KeywordTok{I}\NormalTok{(}\StringTok{"#000000"}\NormalTok{),}\DataTypeTok{size=}\DecValTok{3}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{ , }\DataTypeTok{angle =} \DecValTok{30}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HW1_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\hypertarget{ux64c1ux6709ux6700ux591anumber_of_reviewsux7684neighbourhood}{%
+\subsubsection{\texorpdfstring{\textbf{3.擁有最多number\_of\_reviews的neighbourhood}}{3.擁有最多number\_of\_reviews的neighbourhood}}\label{ux64c1ux6709ux6700ux591anumber_of_reviewsux7684neighbourhood}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{air_bnb }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(neighbourhood_group }\OperatorTok{==}\StringTok{ "Manhattan"}  \OperatorTok{&}\StringTok{ }\NormalTok{number_of_reviews }\OperatorTok{>=}\DecValTok{400}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(neighbourhood) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{sum_reviews =} \KeywordTok{sum}\NormalTok{(number_of_reviews)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(neighbourhood,sum_reviews) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{rank}\NormalTok{(}\KeywordTok{desc}\NormalTok{(sum_reviews)) }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   neighbourhood sum_reviews
+##   <chr>               <dbl>
+## 1 Harlem               2695
+\end{verbatim}
+
+\hypertarget{edaux5206ux6790}{%
+\subsubsection{\texorpdfstring{\textbf{4.EDA分析}}{4.EDA分析}}\label{edaux5206ux6790}}
+
+\hypertarget{ux53bbux9664ux6389naux503c}{%
+\paragraph{去除掉NA值}\label{ux53bbux9664ux6389naux503c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Harlem <-}\StringTok{ }\NormalTok{air_bnb }\OperatorTok{%>%}\StringTok{ }
+\StringTok{              }\KeywordTok{filter}\NormalTok{(number_of_reviews }\OperatorTok{>=}\DecValTok{400} \OperatorTok{&}\StringTok{ }\NormalTok{neighbourhood }\OperatorTok{==}\StringTok{ "Harlem"}\NormalTok{)}
+\KeywordTok{table}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(Harlem))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## FALSE 
+##    80
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Harlem <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(Harlem)}
+\KeywordTok{table}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(Harlem))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## FALSE 
+##    80
+\end{verbatim}
+
+\hypertarget{edaux5206ux6790-1}{%
+\paragraph{EDA分析}\label{edaux5206ux6790-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(Harlem)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Classes 'tbl_df', 'tbl' and 'data.frame':    5 obs. of  16 variables:
+##  $ id                            : num  58059 476983 891117 903947 903972
+##  $ name                          : chr  "PRIVATE Room on Historic Sugar Hill" "PRIVATE Room in Spacious, Quiet Apt" "Private Bedroom in Manhattan" "Beautiful Bedroom in Manhattan" ...
+##  $ host_id                       : num  277379 277379 4734398 4734398 4734398
+##  $ host_name                     : chr  "Agnes" "Agnes" "Jj" "Jj" ...
+##  $ neighbourhood_group           : chr  "Manhattan" "Manhattan" "Manhattan" "Manhattan" ...
+##  $ neighbourhood                 : chr  "Harlem" "Harlem" "Harlem" "Harlem" ...
+##  $ latitude                      : num  40.8 40.8 40.8 40.8 40.8
+##  $ longitude                     : num  -73.9 -73.9 -73.9 -73.9 -73.9
+##  $ room_type                     : chr  "Private room" "Private room" "Private room" "Private room" ...
+##  $ price                         : num  60 85 49 49 49
+##  $ minimum_nights                : num  1 1 1 1 1
+##  $ number_of_reviews             : num  458 439 594 597 607
+##  $ last_review                   : Date, format: "2019-07-03" "2019-07-05" ...
+##  $ reviews_per_month             : num  4.58 5.12 7.57 7.72 7.75
+##  $ calculated_host_listings_count: num  2 2 3 3 3
+##  $ availability_365              : num  258 238 339 342 293
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(Harlem , }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ number_of_reviews, }\DataTypeTok{y =}\NormalTok{ price, }\DataTypeTok{color =}\NormalTok{ host_name, }\DataTypeTok{shape =}\NormalTok{ room_type)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size=}\FloatTok{1.5}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HW1_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+number\_of\_reviews大於400且neighbourhood為Harlem的共有五間房子，評論最多的607則。但價格最高的反而是評論數最少的房子。
+而評論最多的三間皆是Ji的房子，其他則是Agnes的。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(Harlem , }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ price, }\DataTypeTok{fill =}\NormalTok{ room_type)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.7}\NormalTok{ , }\DataTypeTok{binwidth=}\DecValTok{3}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{ , }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HW1_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+最高房價為85元，類型為Private room。最低房價為49元，類型為Private room。
+
+\end{document}
