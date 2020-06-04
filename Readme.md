@@ -1,19 +1,16 @@
 # R language
 ### 線上連續劇觀看資料
-
-
   - 將 watch.table 與其他兩個報表合併為full.table
   - 計算每部劇男生、女生觀看次數
   - 針對用Android系統的客戶進行分析 
   - 針對台北男性客戶進行分析
 
 ### kaggle上2019紐約Airbnb的資料
-
   - 利用ggplot畫經緯度的scatter plot
   - 針對曼哈頓資畫bar chart
   - 擁有最多number_of_reviews的neighbourhood
   - EDA分析
-
+  
 License
 ----
 
